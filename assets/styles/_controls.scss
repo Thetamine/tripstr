@@ -1,0 +1,160 @@
+$off-white: #EEEEEE;
+$tripstr-green: #24AD33;
+$tripstr-blue: #3046C7;
+$violet: #AB3FB1;
+$charcoal: #1F1611;
+
+@import '_animation';
+
+.routeTypeContainer {
+  background-color: rgba(32, 22, 17, 0.4);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .roadTripModal, .vacationModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    text-align: center;
+    height: 35%;
+    width: 90%;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: $off-white;
+
+  }
+  .roadTripBtn, .vacationBtn {
+    padding: 10px 60px;
+    color: $off-white;
+    background-color: $tripstr-green;
+    border: 2px solid $tripstr-green;
+    border-bottom: 2px solid darken($tripstr-green, 2%);
+    border-radius: 3px;
+    &:hover {
+      background-color: darken($tripstr-green, 5%);
+      transition: 300ms;
+    }
+    &:active {
+      top: 3px;
+      transition: 300ms;
+    }
+  }
+}
+
+.destinationContainer, .searchContainer {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  padding-left: 10px;
+  position: absolute;
+  bottom: 53px;
+  background-color: $off-white;
+  border-top: 3px solid $violet;
+
+  .destinationInput, .searchPlacesInput {
+    background-color: $off-white;
+    color: $charcoal;
+    width: 60vw;
+    height: 18.8px;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 2px solid $charcoal;
+    &:focus::-webkit-input-placeholder {
+      color: transparent;
+      transition: 100ms;
+    }
+    &::-webkit-input-placeholder{
+      color: $charcoal;
+      font-size: 18px;
+      padding-left: 5px;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: $charcoal;
+      font-size: 16px;
+
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: $charcoal;
+      font-size: 16px;
+
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: $charcoal;
+      font-size: 16px;
+
+    }
+    
+  }
+
+  .destinationBtn, .searchBtn {
+    background-color: $off-white;
+    color: $charcoal;
+    border: 0;
+    border-bottom: 2px solid $charcoal;
+    font-size: 16px;
+
+  }
+
+}
+
+.searchContainer {
+  left: 100%;
+}
+
+
+
+.directionsItinerary {
+  overflow-y: auto;
+  width: 377px;
+  height: 100vh;
+  position: absolute;
+  bottom: 0;
+  background-color: white;
+}
+
+.getDirectionsBtn {
+  background-color: navy;
+  color: white;
+  
+}
+
+.ms-composite {
+  height: 100vh;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.NavBar_zoomIn {
+  margin-top: 5px;
+}
+
+.destinationinputDiv {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+}
+
+.placesInputDiv {
+  position: absolute;
+  bottom: 100;
+  z-index: 10;
+}
+
+.bm_bottomRightOverlay {
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 5px;
+  width: 100%;
+  background-color: $off-white;
+}

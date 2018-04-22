@@ -1,0 +1,193 @@
+body {
+  margin: 0; }
+
+#mapContainer {
+  width: 100%;
+  height: 100vh;
+  position: relative; }
+
+#myMap {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  bottom: 0; }
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%); } }
+
+.slideOutLeft {
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 200ms;
+  -webkit-animation-name: slideOutLeft;
+  -webkit-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 200ms;
+  -moz-animation-name: slideOutLeft;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-delay: 0s;
+  -o-animation-duration: 200ms;
+  -o-animation-name: slideOutLeft;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-delay: 0s;
+  animation-duration: 200ms;
+  animation-name: slideOutLeft;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */ }
+
+.routeTypeContainer {
+  background-color: rgba(32, 22, 17, 0.4);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .routeTypeContainer .roadTripModal, .routeTypeContainer .vacationModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    text-align: center;
+    height: 35%;
+    width: 90%;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #EEEEEE; }
+  .routeTypeContainer .roadTripBtn, .routeTypeContainer .vacationBtn {
+    padding: 10px 60px;
+    color: #EEEEEE;
+    background-color: #24AD33;
+    border: 2px solid #24AD33;
+    border-bottom: 2px solid #22a531;
+    border-radius: 3px; }
+    .routeTypeContainer .roadTripBtn:hover, .routeTypeContainer .vacationBtn:hover {
+      background-color: #20982d;
+      transition: 300ms; }
+    .routeTypeContainer .roadTripBtn:active, .routeTypeContainer .vacationBtn:active {
+      top: 3px;
+      transition: 300ms; }
+
+.destinationContainer, .searchContainer {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  padding-left: 10px;
+  position: absolute;
+  bottom: 53px;
+  background-color: #EEEEEE;
+  border-top: 3px solid #AB3FB1; }
+  .destinationContainer .destinationInput, .destinationContainer .searchPlacesInput, .searchContainer .destinationInput, .searchContainer .searchPlacesInput {
+    background-color: #EEEEEE;
+    color: #1F1611;
+    width: 60vw;
+    height: 18.8px;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 2px solid #1F1611; }
+    .destinationContainer .destinationInput:focus::-webkit-input-placeholder, .destinationContainer .searchPlacesInput:focus::-webkit-input-placeholder, .searchContainer .destinationInput:focus::-webkit-input-placeholder, .searchContainer .searchPlacesInput:focus::-webkit-input-placeholder {
+      color: transparent;
+      transition: 100ms; }
+    .destinationContainer .destinationInput::-webkit-input-placeholder, .destinationContainer .searchPlacesInput::-webkit-input-placeholder, .searchContainer .destinationInput::-webkit-input-placeholder, .searchContainer .searchPlacesInput::-webkit-input-placeholder {
+      color: #1F1611;
+      font-size: 18px;
+      padding-left: 5px; }
+    .destinationContainer .destinationInput::-moz-placeholder, .destinationContainer .searchPlacesInput::-moz-placeholder, .searchContainer .destinationInput::-moz-placeholder, .searchContainer .searchPlacesInput::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #1F1611;
+      font-size: 16px; }
+    .destinationContainer .destinationInput:-ms-input-placeholder, .destinationContainer .searchPlacesInput:-ms-input-placeholder, .searchContainer .destinationInput:-ms-input-placeholder, .searchContainer .searchPlacesInput:-ms-input-placeholder {
+      /* IE 10+ */
+      color: #1F1611;
+      font-size: 16px; }
+    .destinationContainer .destinationInput:-moz-placeholder, .destinationContainer .searchPlacesInput:-moz-placeholder, .searchContainer .destinationInput:-moz-placeholder, .searchContainer .searchPlacesInput:-moz-placeholder {
+      /* Firefox 18- */
+      color: #1F1611;
+      font-size: 16px; }
+  .destinationContainer .destinationBtn, .destinationContainer .searchBtn, .searchContainer .destinationBtn, .searchContainer .searchBtn {
+    background-color: #EEEEEE;
+    color: #1F1611;
+    border: 0;
+    border-bottom: 2px solid #1F1611;
+    font-size: 16px; }
+
+.searchContainer {
+  left: 100%; }
+
+.directionsItinerary {
+  overflow-y: auto;
+  width: 377px;
+  height: 100vh;
+  position: absolute;
+  bottom: 0;
+  background-color: white; }
+
+.getDirectionsBtn {
+  background-color: navy;
+  color: white; }
+
+.ms-composite {
+  height: 100vh;
+  width: 100%; }
+
+.hidden {
+  display: none; }
+
+.NavBar_zoomIn {
+  margin-top: 5px; }
+
+.destinationinputDiv {
+  position: absolute;
+  bottom: 0;
+  z-index: 10; }
+
+.placesInputDiv {
+  position: absolute;
+  bottom: 100;
+  z-index: 10; }
+
+.bm_bottomRightOverlay {
+  right: 0 !important;
+  bottom: 0 !important;
+  padding: 5px;
+  width: 100%;
+  background-color: #EEEEEE; }
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0%); }
+  100% {
+    transform: translateX(-100%); } }
+
+.slideOutLeft {
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 200ms;
+  -webkit-animation-name: slideOutLeft;
+  -webkit-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 200ms;
+  -moz-animation-name: slideOutLeft;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-delay: 0s;
+  -o-animation-duration: 200ms;
+  -o-animation-name: slideOutLeft;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-delay: 0s;
+  animation-duration: 200ms;
+  animation-name: slideOutLeft;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */ }
+
+/*# sourceMappingURL=styles.css.map*/
