@@ -16,6 +16,8 @@ const authentication = {
   bingAPIKey: 'Aq7ULuBT7euUnNSrYvx-6u0bAWfIVmyre8fdnsrE5GEzQGn_Cm26V4DxxBygLqwZ'
 };
 
+const PORT = process.env.PORT || 8080;
+
 
 app.set('view engine', 'ejs');
 
@@ -220,4 +222,4 @@ function formatDate(date) {
 
 app.use(express.static(__dirname + '/public/dist'));
 
-app.listen(8080);
+app.listen(PORT);
