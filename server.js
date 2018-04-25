@@ -4,7 +4,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const app = express();
 
-let code, token, sess;
+let code, token, sess; 
 
 let today = new Date();
 

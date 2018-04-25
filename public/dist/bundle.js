@@ -9152,7 +9152,6 @@ window.onload = function getMap() {
   uiOverlay.prototype.onAdd = function () {
     // construct all html elements for use on the app
     const container = document.createElement('div');
-    container.style.position = 'absolute';
     container.style.width = '100%';
     container.style.height = '100%';
 
@@ -9165,11 +9164,15 @@ window.onload = function getMap() {
     const vacationModal = document.createElement('div');
     vacationModal.className = 'vacationModal';
 
-    const searchContainer = document.createElement('div');
-    searchContainer.className = 'searchContainer hidden';
-
     const destinationContainer = document.createElement('div');
-    destinationContainer.className = 'destinationContainer hidden';
+    destinationContainer.className = 'container__searchControls --destinationSearch hidden';
+
+    const searchContainer = document.createElement('div');
+    searchContainer.id = 'searchContainer';
+    searchContainer.className = 'container__searchControls --placesSearch hidden';
+
+    const directionsBtnContainer = document.createElement('div');
+    directionsBtnContainer.className = 'container__searchControls --getDirections hidden';
 
     this.destinationInput = document.createElement('input');
     this.destinationInput.id = 'destinationInput';
@@ -9180,12 +9183,12 @@ window.onload = function getMap() {
     this.destinationBtn.type = 'button';
     this.destinationBtn.value = 'Next';
     this.destinationBtn.id = 'destinationBtn';
-    this.destinationBtn.className = 'destinationBtn';
+    this.destinationBtn.className = 'inputGroup__btn';
     this.destinationBtn.onclick = function () {
       loadMapModule(destinationInput.value, map, locationQuery.destinationLocation);
       console.log(locationQuery.destinationlocation);
       destinationContainer.classList.toggle("slideOutLeft");
-      searchContainer.classList.toggle("slideOutLeft");
+      searchContainer.classList.toggle("slideInLeft");
     };
 
     this.searchInput = document.createElement('input');
@@ -9197,8 +9200,11 @@ window.onload = function getMap() {
     this.searchBtn.type = 'button';
     this.searchBtn.value = 'search';
     this.searchBtn.id = 'searchBtn';
-    this.searchBtn.className = 'searchBtn';
+    this.searchBtn.className = 'inputGroup__btn';
     this.searchBtn.onclick = function () {
+      searchContainer.classList.toggle("slideInLeft");
+      searchContainer.classList.toggle("slideOutLeft");
+      directionsBtnContainer.classList.toggle("slideInLeft");
       getData(map, locationQuery);
     };
 
@@ -9207,7 +9213,10 @@ window.onload = function getMap() {
     this.getDirectionsBtn.type = 'button';
     this.getDirectionsBtn.value = 'get directions!';
     this.getDirectionsBtn.id = 'getDirectionsBtn';
+    this.getDirectionsBtn.className = 'tripstr__btn --blue --directionsBtn';
     this.getDirectionsBtn.onclick = function () {
+      directionsBtnContainer.classList.toggle('slideOutDown');
+      directionsBtnContainer.classList.toggle('slideInLeft');
       compareLat(locationQuery);
       getDirections(locationQuery);
     };
@@ -9224,14 +9233,14 @@ window.onload = function getMap() {
 
     this.vacationBtn = document.createElement('input');
     this.vacationBtn.type = 'button';
-    this.vacationBtn.className = 'vacationBtn';
+    this.vacationBtn.className = 'tripstr__btn --green';
     this.vacationBtn.value = 'Vacation';
     this.vacationBtn.onclick = function () {
       locationQuery.queryType = 'vacation';
       routeTypeContainer.classList.toggle('hidden');
       destinationContainer.classList.toggle('hidden');
       searchContainer.classList.toggle('hidden');
-      this.getDirectionsBtn.classList.toggle('hidden');
+      directionsBtnContainer.classList.toggle('hidden');
       this.locateMeBtn.classList.toggle('hidden');
     }.bind(this);
 
@@ -9240,14 +9249,14 @@ window.onload = function getMap() {
 
     this.roadTripBtn = document.createElement('input');
     this.roadTripBtn.type = 'button';
-    this.roadTripBtn.className = 'roadTripBtn';
+    this.roadTripBtn.className = 'tripstr__btn --green';
     this.roadTripBtn.value = 'Road Trip';
     this.roadTripBtn.onclick = function () {
       locationQuery.queryType = 'road-trip';
       routeTypeContainer.classList.toggle('hidden');
       destinationContainer.classList.toggle('hidden');
       searchContainer.classList.toggle('hidden');
-      this.getDirectionsBtn.classList.toggle('hidden');
+      directionsBtnContainer.classList.toggle('hidden');
       this.locateMeBtn.classList.toggle('hidden');
     }.bind(this);
 
@@ -9268,6 +9277,7 @@ window.onload = function getMap() {
 
     container.appendChild(searchContainer);
     container.appendChild(destinationContainer);
+    container.appendChild(directionsBtnContainer);
 
     searchContainer.appendChild(this.searchInput);
     searchContainer.appendChild(this.searchBtn);
@@ -9275,7 +9285,8 @@ window.onload = function getMap() {
     destinationContainer.appendChild(this.destinationInput);
     destinationContainer.appendChild(this.destinationBtn);
 
-    container.appendChild(this.getDirectionsBtn);
+    directionsBtnContainer.appendChild(this.getDirectionsBtn);
+
     container.appendChild(this.locateMeBtn);
     // container.appendChild(this.getDirectionsContainer);
 

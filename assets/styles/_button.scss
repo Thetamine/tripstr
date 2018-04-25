@@ -1,0 +1,38 @@
+@import '_mixins';
+@import '_variables';
+
+.tripstr__btn {
+  padding: 10px 60px;
+  @include buttonColor();
+  &:hover {
+    transition: 300ms;
+  }
+  &:active {
+    top: 3px;
+    transition: 300ms;
+  }
+}
+.--green {
+  @include buttonColor($off-white, $tripstr-green);
+}
+
+.--blue {
+  @include buttonColor($off-white, $tripstr-blue);
+}
+
+.--directionsBtn {
+  margin: auto;
+}
+
+.inputGroup__btn {
+  background-color: $off-white;
+  color: $charcoal;
+  border: 0;
+  border-bottom: 2px solid $charcoal;
+  font-size: 16px;
+
+} 
+
+.locateMeBtn {
+  position: absolute;
+}

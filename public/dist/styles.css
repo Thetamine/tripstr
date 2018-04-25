@@ -1,6 +1,52 @@
 body {
   margin: 0; }
 
+.tripstr__btn {
+  padding: 10px 60px;
+  color: #1F1611;
+  background-color: #EEEEEE;
+  border: 2px solid #EEEEEE;
+  border-bottom: 2px solid #e9e9e9;
+  border-radius: 3px; }
+  .tripstr__btn:hover {
+    background-color: #e1e1e1; }
+  .tripstr__btn:hover {
+    transition: 300ms; }
+  .tripstr__btn:active {
+    top: 3px;
+    transition: 300ms; }
+
+.\--green {
+  color: #EEEEEE;
+  background-color: #24AD33;
+  border: 2px solid #24AD33;
+  border-bottom: 2px solid #22a531;
+  border-radius: 3px; }
+  .\--green:hover {
+    background-color: #20982d; }
+
+.\--blue {
+  color: #EEEEEE;
+  background-color: #3046C7;
+  border: 2px solid #3046C7;
+  border-bottom: 2px solid #2e43bf;
+  border-radius: 3px; }
+  .\--blue:hover {
+    background-color: #2b3fb2; }
+
+.\--directionsBtn {
+  margin: auto; }
+
+.inputGroup__btn {
+  background-color: #EEEEEE;
+  color: #1F1611;
+  border: 0;
+  border-bottom: 2px solid #1F1611;
+  font-size: 16px; }
+
+.locateMeBtn {
+  position: absolute; }
+
 #mapContainer {
   width: 100%;
   height: 100vh;
@@ -13,35 +59,35 @@ body {
   padding: 0;
   bottom: 0; }
 
+@keyframes slideOutDown {
+  0% {
+    transform: translateY(0%); }
+  100% {
+    transform: translateY(100%); } }
+
 @keyframes slideOutLeft {
+  0% {
+    transform: translateX(-100%); }
+  100% {
+    transform: translateX(-200%); } }
+
+@keyframes slideInLeft {
   0% {
     transform: translateX(0%); }
   100% {
     transform: translateX(-100%); } }
 
+.slideOutDown {
+  bottom: -100% !important; }
+
 .slideOutLeft {
-  -webkit-animation-delay: 0s;
-  -webkit-animation-duration: 200ms;
-  -webkit-animation-name: slideOutLeft;
-  -webkit-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  -moz-animation-delay: 0s;
-  -moz-animation-duration: 200ms;
-  -moz-animation-name: slideOutLeft;
-  -moz-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  -o-animation-delay: 0s;
-  -o-animation-duration: 200ms;
-  -o-animation-name: slideOutLeft;
-  -o-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  animation-delay: 0s;
-  animation-duration: 200ms;
-  animation-name: slideOutLeft;
-  animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */ }
+  left: -100% !important; }
+
+.slideInLeft {
+  left: 0% !important; }
 
 .routeTypeContainer {
+  position: absolute;
   background-color: rgba(32, 22, 17, 0.4);
   height: 100vh;
   width: 100vw;
@@ -61,67 +107,34 @@ body {
     margin: 20px;
     border-radius: 10px;
     background-color: #EEEEEE; }
-  .routeTypeContainer .roadTripBtn, .routeTypeContainer .vacationBtn {
-    padding: 10px 60px;
-    color: #EEEEEE;
-    background-color: #24AD33;
-    border: 2px solid #24AD33;
-    border-bottom: 2px solid #22a531;
-    border-radius: 3px; }
-    .routeTypeContainer .roadTripBtn:hover, .routeTypeContainer .vacationBtn:hover {
-      background-color: #20982d;
-      transition: 300ms; }
-    .routeTypeContainer .roadTripBtn:active, .routeTypeContainer .vacationBtn:active {
-      top: 3px;
-      transition: 300ms; }
 
-.destinationContainer, .searchContainer {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100px;
-  padding-left: 10px;
-  position: absolute;
-  bottom: 53px;
+.destinationInput, .searchPlacesInput {
   background-color: #EEEEEE;
-  border-top: 3px solid #AB3FB1; }
-  .destinationContainer .destinationInput, .destinationContainer .searchPlacesInput, .searchContainer .destinationInput, .searchContainer .searchPlacesInput {
-    background-color: #EEEEEE;
+  color: #1F1611;
+  width: 60vw;
+  height: 18.8px;
+  font-size: 18px;
+  border: 0;
+  border-bottom: 2px solid #1F1611; }
+  .destinationInput:focus::-webkit-input-placeholder, .searchPlacesInput:focus::-webkit-input-placeholder {
+    color: transparent;
+    transition: 100ms; }
+  .destinationInput::-webkit-input-placeholder, .searchPlacesInput::-webkit-input-placeholder {
     color: #1F1611;
-    width: 60vw;
-    height: 18.8px;
     font-size: 18px;
-    border: 0;
-    border-bottom: 2px solid #1F1611; }
-    .destinationContainer .destinationInput:focus::-webkit-input-placeholder, .destinationContainer .searchPlacesInput:focus::-webkit-input-placeholder, .searchContainer .destinationInput:focus::-webkit-input-placeholder, .searchContainer .searchPlacesInput:focus::-webkit-input-placeholder {
-      color: transparent;
-      transition: 100ms; }
-    .destinationContainer .destinationInput::-webkit-input-placeholder, .destinationContainer .searchPlacesInput::-webkit-input-placeholder, .searchContainer .destinationInput::-webkit-input-placeholder, .searchContainer .searchPlacesInput::-webkit-input-placeholder {
-      color: #1F1611;
-      font-size: 18px;
-      padding-left: 5px; }
-    .destinationContainer .destinationInput::-moz-placeholder, .destinationContainer .searchPlacesInput::-moz-placeholder, .searchContainer .destinationInput::-moz-placeholder, .searchContainer .searchPlacesInput::-moz-placeholder {
-      /* Firefox 19+ */
-      color: #1F1611;
-      font-size: 16px; }
-    .destinationContainer .destinationInput:-ms-input-placeholder, .destinationContainer .searchPlacesInput:-ms-input-placeholder, .searchContainer .destinationInput:-ms-input-placeholder, .searchContainer .searchPlacesInput:-ms-input-placeholder {
-      /* IE 10+ */
-      color: #1F1611;
-      font-size: 16px; }
-    .destinationContainer .destinationInput:-moz-placeholder, .destinationContainer .searchPlacesInput:-moz-placeholder, .searchContainer .destinationInput:-moz-placeholder, .searchContainer .searchPlacesInput:-moz-placeholder {
-      /* Firefox 18- */
-      color: #1F1611;
-      font-size: 16px; }
-  .destinationContainer .destinationBtn, .destinationContainer .searchBtn, .searchContainer .destinationBtn, .searchContainer .searchBtn {
-    background-color: #EEEEEE;
+    padding-left: 5px; }
+  .destinationInput::-moz-placeholder, .searchPlacesInput::-moz-placeholder {
+    /* Firefox 19+ */
     color: #1F1611;
-    border: 0;
-    border-bottom: 2px solid #1F1611;
     font-size: 16px; }
-
-.searchContainer {
-  left: 100%; }
+  .destinationInput:-ms-input-placeholder, .searchPlacesInput:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #1F1611;
+    font-size: 16px; }
+  .destinationInput:-moz-placeholder, .searchPlacesInput:-moz-placeholder {
+    /* Firefox 18- */
+    color: #1F1611;
+    font-size: 16px; }
 
 .directionsItinerary {
   overflow-y: auto;
@@ -133,14 +146,17 @@ body {
 
 .getDirectionsBtn {
   background-color: navy;
-  color: white; }
+  color: white;
+  position: absolute;
+  bottom: 50px;
+  left: 0; }
 
 .ms-composite {
   height: 100vh;
   width: 100%; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 .NavBar_zoomIn {
   margin-top: 5px; }
@@ -162,32 +178,26 @@ body {
   width: 100%;
   background-color: #EEEEEE; }
 
-@keyframes slideOutLeft {
-  0% {
-    transform: translateX(0%); }
-  100% {
-    transform: translateX(-100%); } }
+.container__searchControls {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  padding-left: 10px;
+  position: absolute;
+  bottom: 53px;
+  background-color: #EEEEEE;
+  border-top: 3px solid #AB3FB1;
+  transition: .2s ease-in-out; }
 
-.slideOutLeft {
-  -webkit-animation-delay: 0s;
-  -webkit-animation-duration: 200ms;
-  -webkit-animation-name: slideOutLeft;
-  -webkit-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  -moz-animation-delay: 0s;
-  -moz-animation-duration: 200ms;
-  -moz-animation-name: slideOutLeft;
-  -moz-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  -o-animation-delay: 0s;
-  -o-animation-duration: 200ms;
-  -o-animation-name: slideOutLeft;
-  -o-animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */
-  animation-delay: 0s;
-  animation-duration: 200ms;
-  animation-name: slideOutLeft;
-  animation-fill-mode: forwards;
-  /* this prevents the animation from restarting! */ }
+.\--destinationSearch {
+  left: 0; }
+
+.\--placesSearch, .\--getDirections {
+  left: 100%; }
+
+.\--getDirections {
+  padding: 0; }
 
 /*# sourceMappingURL=styles.css.map*/

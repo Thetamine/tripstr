@@ -1,30 +1,28 @@
-@mixin animation ($delay, $duration, $animation) {
-  -webkit-animation-delay: $delay;
-  -webkit-animation-duration: $duration;
-  -webkit-animation-name: $animation;
-  -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+@import '_mixins';
 
-  -moz-animation-delay: $delay;
-  -moz-animation-duration: $duration;
-  -moz-animation-name: $animation;
-  -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
-
-  -o-animation-delay: $delay;
-  -o-animation-duration: $duration;
-  -o-animation-name: $animation;
-  -o-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
-
-  animation-delay: $delay;
-  animation-duration: $duration;
-  animation-name: $animation;
-  animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+@keyframes slideOutDown {
+  0% {transform: translateY(0%)}
+  100% {transform: translateY(100%)}
 }
 
 @keyframes slideOutLeft {
+  0% {transform: translateX(-100%) };
+  100% {transform: translateX(-200%) };
+}
+
+@keyframes slideInLeft {
   0% {transform: translateX(0%)};
   100% {transform: translateX(-100%)};
 }
 
+.slideOutDown {
+  bottom: -100% !important;
+}
+
 .slideOutLeft {
-  @include animation(0s, 200ms, slideOutLeft);
+  left: -100% !important;
+}
+
+.slideInLeft {
+  left: 0% !important;
 }
