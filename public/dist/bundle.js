@@ -9441,7 +9441,7 @@ window.onload = function getMap() {
   function getData(userMap, locObj) {
 
     if (locObj.queryType === 'vacation') {
-      $.getJSON(`http://localhost:8080/search/vacation/${locObj.destinationLocation.lat},${locObj.destinationLocation.lng}/${searchPlacesInput.value}`, function (data) {
+      $.getJSON(`https://arcane-basin-98906.herokuapp.com/search/vacation/${locObj.destinationLocation.lat},${locObj.destinationLocation.lng}/${searchPlacesInput.value}`, function (data) {
         // code is breaking right here, might need to get data from the json call into the done block. Azsq  
       }).done(function (data) {
         console.log(data);
@@ -9450,7 +9450,7 @@ window.onload = function getMap() {
         console.log(err);
       });
     } else {
-      $.getJSON(`http://localhost:8080/search/road-trip
+      $.getJSON(`https://arcane-basin-98906.herokuapp.com/search/road-trip
 /${locObj.userLocation.lat},${locObj.userLocation.lng}
 /${locObj.destinationLocation.lat},${locObj.destinationLocation.lng}
 /${searchPlacesInput.value}`, function (data) {}).done(function (data) {
