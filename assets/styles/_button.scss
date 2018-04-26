@@ -24,15 +24,28 @@
   margin: auto;
 }
 
-.inputGroup__btn {
+.inputGroup__btn, .mapControls__btn {
   background-color: $off-white;
   color: $charcoal;
   border: 0;
   border-bottom: 2px solid $charcoal;
-  font-size: 16px;
+  font-size: 1.5em;
 
 } 
 
-.locateMeBtn {
-  position: absolute;
+.mapControls__btn {
+  padding: 0;
+  font-size: 1.2em;
+  border: 0;
+
+}
+
+.--resetBtn {
+  position: relative;
+  color: lightslategray;
+}
+
+.--locateMeBtn {
+  border-top: 1px solid rgba(32, 22, 17, 0.3);
+  transition: .2s ease-in-out;
 }

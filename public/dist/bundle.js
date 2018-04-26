@@ -9074,7 +9074,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 window.onload = function getMap() {
   let obj,
-      color,
       catName,
       directionsManager,
       searchManager,
@@ -9130,7 +9129,6 @@ window.onload = function getMap() {
     // create a dummy button to get some Data
     // TODO: Replace with an actual search function
 
-
     // create a container for the directionsItinerary
     this.getDirectionsContainer = document.createElement('section');
     this.getDirectionsContainer.id = 'directionsItinerary';
@@ -9158,6 +9156,9 @@ window.onload = function getMap() {
     const routeTypeContainer = document.createElement('div');
     routeTypeContainer.className = 'routeTypeContainer';
 
+    const mapControlsContainer = document.createElement('div');
+    mapControlsContainer.className = 'container__mapControls';
+
     const roadTripModal = document.createElement('div');
     roadTripModal.className = 'roadTripModal';
 
@@ -9174,39 +9175,59 @@ window.onload = function getMap() {
     const directionsBtnContainer = document.createElement('div');
     directionsBtnContainer.className = 'container__searchControls --getDirections hidden';
 
+    //input field for finding the user's end destination
     this.destinationInput = document.createElement('input');
     this.destinationInput.id = 'destinationInput';
     this.destinationInput.className = 'destinationInput';
     this.destinationInput.placeholder = 'where are you going?';
 
-    this.destinationBtn = document.createElement('input');
-    this.destinationBtn.type = 'button';
-    this.destinationBtn.value = 'Next';
+    // button for input field. submits information, triggers animations and brings the 
+    // next input into view 
+    this.destinationBtn = document.createElement('button');
     this.destinationBtn.id = 'destinationBtn';
-    this.destinationBtn.className = 'inputGroup__btn';
+    this.destinationBtn.className = 'inputGroup__btn ';
     this.destinationBtn.onclick = function () {
       loadMapModule(destinationInput.value, map, locationQuery.destinationLocation);
       console.log(locationQuery.destinationlocation);
-      destinationContainer.classList.toggle("slideOutLeft");
-      searchContainer.classList.toggle("slideInLeft");
-    };
+      // slide out the destination container, and slide in the searchPlaces container
+      destinationContainer.classList.add("slideOutLeft");
+      searchContainer.classList.add("slideInLeft");
+      // once the search has started, activate the reset button and then indicate
+      // to the user through animation and color change that the button is active.
+      this.resetBtn.removeAttribute('disabled', '');
+      this.resetBtn.classList.remove('deactivateResetBtn');
+      this.resetBtn.classList.add('activateResetBtn');
+    }.bind(this);
 
+    // <i class="far fa-arrow-al-circle-right"></i>
+    // an element for the font awesome icron circle arrow right, used to provide polish
+    // for the destination button. 
+    this.faDestinationIcon = document.createElement('i');
+    this.faDestinationIcon.className = 'far fa-arrow-alt-circle-right';
+
+    // input for the user to search for places they're interested in visiting along the 
+    // way.
     this.searchInput = document.createElement('input');
     this.searchInput.id = 'searchPlacesInput';
     this.searchInput.className = 'searchPlacesInput';
     this.searchInput.placeholder = 'Enter Search Terms';
 
-    this.searchBtn = document.createElement('input');
-    this.searchBtn.type = 'button';
-    this.searchBtn.value = 'search';
+    // button for storing user searches, switching out element, and getting data,
+    // charting places on the map. 
+    this.searchBtn = document.createElement('button');
     this.searchBtn.id = 'searchBtn';
     this.searchBtn.className = 'inputGroup__btn';
     this.searchBtn.onclick = function () {
-      searchContainer.classList.toggle("slideInLeft");
-      searchContainer.classList.toggle("slideOutLeft");
-      directionsBtnContainer.classList.toggle("slideInLeft");
+      searchContainer.classList.remove("slideInLeft");
+      searchContainer.classList.add("slideOutLeft");
+      directionsBtnContainer.classList.add("slideInLeft");
       getData(map, locationQuery);
     };
+
+    // font awesome search icon, for polishing the user interface acting as the button
+    // value for searchInput.
+    this.faSearchIcon = document.createElement('i');
+    this.faSearchIcon.className = 'fa fa-search';
 
     // create a buttom that maps out your chosen route
     this.getDirectionsBtn = document.createElement('input');
@@ -9215,22 +9236,20 @@ window.onload = function getMap() {
     this.getDirectionsBtn.id = 'getDirectionsBtn';
     this.getDirectionsBtn.className = 'tripstr__btn --blue --directionsBtn';
     this.getDirectionsBtn.onclick = function () {
-      directionsBtnContainer.classList.toggle('slideOutDown');
-      directionsBtnContainer.classList.toggle('slideInLeft');
-      compareLat(locationQuery);
+      directionsBtnContainer.classList.add('slideOutDown');
       getDirections(locationQuery);
     };
 
-    // create a buttom that maps out your current location
-    this.locateMeBtn = document.createElement('input');
-    this.locateMeBtn.type = 'button';
-    this.locateMeBtn.value = 'Locate Me';
+    // create a button that maps out your current location
+    this.locateMeBtn = document.createElement('button');
     this.locateMeBtn.id = 'locateMe';
-    this.locateMeBtn.className = 'locateMeBtn hidden';
+    this.locateMeBtn.className = 'mapControls__btn --locateMeBtn fa fa-crosshairs hidden';
     this.locateMeBtn.onclick = function () {
       locateMe(map, locationQuery.userLocation);
     };
 
+    // create a button for defining your route type as a vacation.
+    // presented to the user when they're planning their trip the first time
     this.vacationBtn = document.createElement('input');
     this.vacationBtn.type = 'button';
     this.vacationBtn.className = 'tripstr__btn --green';
@@ -9241,12 +9260,21 @@ window.onload = function getMap() {
       destinationContainer.classList.toggle('hidden');
       searchContainer.classList.toggle('hidden');
       directionsBtnContainer.classList.toggle('hidden');
+
+      this.resetBtn.classList.toggle('hidden');
+      this.resetBtn.setAttribute('disabled', '');
+
       this.locateMeBtn.classList.toggle('hidden');
     }.bind(this);
 
+    // create some text to accompany the vacation button
+    // giving the user some instruction on what they should do. 
     this.vacationText = document.createElement('p');
     this.vacationText.innerHTML = 'Going on Vacation?';
 
+    // see comment for vacation button, this is the same thing, 
+    // only it defines the trip as a road trip, and changes how the 
+    // app searches for locations. 
     this.roadTripBtn = document.createElement('input');
     this.roadTripBtn.type = 'button';
     this.roadTripBtn.className = 'tripstr__btn --green';
@@ -9257,13 +9285,42 @@ window.onload = function getMap() {
       destinationContainer.classList.toggle('hidden');
       searchContainer.classList.toggle('hidden');
       directionsBtnContainer.classList.toggle('hidden');
+
+      this.resetBtn.classList.toggle('hidden');
+      this.resetBtn.setAttribute('disabled', '');
+
       this.locateMeBtn.classList.toggle('hidden');
     }.bind(this);
 
+    // serves the same purpose as vacationText. Just giving the user an idea
+    // for how to use the app.
     this.roadTripText = document.createElement('p');
     this.roadTripText.innerHTML = 'Heading on a Road Trip?';
-    // build out the elements into their respective containers based on app logic
 
+    // create a close button that resets all information
+    // and clears all inputs 
+    this.resetBtn = document.createElement('button');
+    this.resetBtn.id = 'closeDirections';
+    this.resetBtn.className = 'mapControls__btn --resetBtn fa fa-times hidden';
+    this.resetBtn.onclick = function () {
+      destinationContainer.classList.remove("slideOutLeft");
+      searchContainer.classList.remove("slideOutLeft");
+      directionsBtnContainer.classList.remove('slideInLeft');
+      directionsBtnContainer.classList.remove("slideOutDown");
+
+      // return the reset button to its original state. 
+      this.resetBtn.setAttribute('disabled', '');
+      this.resetBtn.classList.remove('activateResetBtn');
+      this.resetBtn.classList.add('deactivateResetBtn');
+
+      // clear all inputs and map data. 
+      this.destinationInput.value = '';
+      this.searchInput.value = '';
+      map.entities.clear();
+      directionsManager.clearAll();
+    }.bind(this);
+
+    // build out the elements into their respective containers based on app logic
     container.appendChild(routeTypeContainer);
 
     routeTypeContainer.appendChild(vacationModal);
@@ -9279,15 +9336,20 @@ window.onload = function getMap() {
     container.appendChild(destinationContainer);
     container.appendChild(directionsBtnContainer);
 
+    container.appendChild(mapControlsContainer);
+    mapControlsContainer.appendChild(this.resetBtn);
+    mapControlsContainer.appendChild(this.locateMeBtn);
+
     searchContainer.appendChild(this.searchInput);
     searchContainer.appendChild(this.searchBtn);
+    this.searchBtn.appendChild(this.faSearchIcon);
 
     destinationContainer.appendChild(this.destinationInput);
     destinationContainer.appendChild(this.destinationBtn);
+    this.destinationBtn.appendChild(this.faDestinationIcon);
 
     directionsBtnContainer.appendChild(this.getDirectionsBtn);
 
-    container.appendChild(this.locateMeBtn);
     // container.appendChild(this.getDirectionsContainer);
 
 
@@ -9306,12 +9368,10 @@ window.onload = function getMap() {
   function determinePinColor(resultCategory) {
     switch (resultCategory) {
       case "Fast Food Restaurant":
-        color = "green";
-        break;
+        return "green";
       default:
-        color = "blue";
+        return "blue";
     }
-    return color;
   }
 
   function getDestination() {
@@ -9322,18 +9382,6 @@ window.onload = function getMap() {
   function toggleContainers(containerToHide, containerToShow, className) {
     containerToHide.classList.toggle(className);
     containerToShow.classList.toggle(className);
-  }
-
-  function compareLat(locObj) {
-    if (locObj.userLocation.lat < locObj.destinationLocation.lat) {
-      locObj.userLocation.compass = 'sw';
-      locObj.destinationLocation.compass = 'ne';
-    } else if (locObj.userLocation.lat > locObj.destinationLocation.lat) {
-      locObj.userLocation.compass = 'ne';
-      locObj.destinationLocation.compass = 'sw';
-    } else {
-      alert('you are missing a location parameter, please make sure location permissions are turned on and try again.');
-    }
   }
 
   // create a route based on user input from the getSearchData function
@@ -9417,18 +9465,18 @@ window.onload = function getMap() {
 
   function pushPlaces(data, userMap) {
     for (let i = 0; i < data.length; i++) {
-      const items = data[i];
-      const catName = items.name; // store the category name for use in determining pin color
-      const pinColor = determinePinColor(catName);
+      const item = data[i];
+      console.log(item.venue.categories[0].name);
+      const pinColor = determinePinColor(item.venue.categories[0].name); // store the category name for use in determining pin color
 
       // define the location of the pin based on the lat and lng
       // of the currently iterated venue
-      const pinLocation = new Microsoft.Maps.Location(items.venue.location.lat, items.venue.location.lng);
+      const pinLocation = new Microsoft.Maps.Location(item.venue.location.lat, item.venue.location.lng);
 
       // instntiate the pushpin class and assign it to the variable pin
       let pin = new Microsoft.Maps.Pushpin(pinLocation, {
-        title: items.venue.name,
-        subtitle: items.venue.categories.pluralName,
+        title: item.venue.name,
+        subtitle: item.venue.categories.pluralName,
         text: '',
         color: pinColor
       });
