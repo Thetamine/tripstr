@@ -12,7 +12,7 @@ let today = new Date();
 const authentication = {
   clientId: 'L5P33BUJOJIRC3JJQ5DP2Q5UETACUJ5B3J1P21PZGGKU1TE4',
   clientSecret: 'PIVSGE1L5TLOYYRQS5EZIF4O45LO5XSWNLU23SCCMTPKAXIV',
-  redirectURL: 'https://arcane-basin-98906.herokuapp.com/callback',
+  redirectURL: 'http://localhost:8080/callback',
   bingAPIKey: 'Aq7ULuBT7euUnNSrYvx-6u0bAWfIVmyre8fdnsrE5GEzQGn_Cm26V4DxxBygLqwZ'
 };
 
