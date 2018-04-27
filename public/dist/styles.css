@@ -156,6 +156,9 @@ body {
 .slideInLeft {
   left: 0% !important; }
 
+.slideInUp {
+  bottom: 53px !important; }
+
 .routeTypeContainer {
   position: absolute;
   background-color: rgba(32, 22, 17, 0.4);
@@ -244,22 +247,36 @@ body {
 .bm_bottomRightOverlay {
   right: 0 !important;
   bottom: 0 !important;
-  padding: 5px;
+  padding: 6px;
   width: 100%;
   background-color: #EEEEEE; }
 
-.container__searchControls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+.container {
   width: 100%;
   height: 100px;
-  position: absolute;
-  bottom: 53px;
-  background-color: #EEEEEE;
-  border-top: 3px solid #AB3FB1;
-  transition: .2s ease-in-out; }
+  position: absolute; }
+  .container__searchControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    bottom: 53px;
+    background-color: #EEEEEE;
+    border-top: 3px solid #AB3FB1;
+    transition: .2s ease-in-out;
+    transition-delay: 150ms; }
+    .container__searchControls--destinationSearch {
+      left: 0; }
+    .container__searchControls--placesSearch {
+      left: 100%; }
+    .container__searchControls--getDirections {
+      left: 100%;
+      padding: 0; }
+    .container__searchControls--directionsItinerary {
+      bottom: -160px;
+      overflow-y: scroll;
+      align-items: baseline;
+      height: 160px; }
 
 .container__mapControls {
   display: flex;
@@ -275,14 +292,8 @@ body {
     margin: 0 5px;
     padding: 5px 0; }
 
-.\--destinationSearch {
-  left: 0; }
-
-.\--placesSearch, .\--getDirections {
-  left: 100%; }
-
-.\--getDirections {
-  padding: 0; }
+.directionsPanel {
+  width: 100% !important; }
 
 /*!
  * Font Awesome Free 5.0.10 by @fontawesome - https://fontawesome.com

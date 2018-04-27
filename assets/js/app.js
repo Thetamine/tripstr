@@ -78,12 +78,11 @@ window.onload = function getMap() {
     // create a container for the directionsItinerary
     this.getDirectionsContainer = document.createElement('section');
     this.getDirectionsContainer.id = 'directionsItinerary';
+    this.getDirectionsContainer.className = 'container container__searchControls container__searchControls--directionsItinerary hidden';
     this.getDirectionsContainer.onmouseover = function () {
-      console.log('Mouse entered directions container!');
       map.setOptions({ disableZooming: true });
     }
     this.getDirectionsContainer.onmouseout = function () {
-      console.log('Mouse exited directions container');
       map.setOptions({ disableZooming: false });
     }
   }
@@ -113,14 +112,14 @@ window.onload = function getMap() {
     vacationModal.className = 'vacationModal';
 
     const destinationContainer = document.createElement('div');
-    destinationContainer.className = 'container__searchControls --destinationSearch hidden';
+    destinationContainer.className = 'container container__searchControls container__searchControls--destinationSearch hidden';
 
     const searchContainer = document.createElement('div')
     searchContainer.id = 'searchContainer';
-    searchContainer.className = 'container__searchControls --placesSearch hidden';
+    searchContainer.className = 'container container__searchControls container__searchControls--placesSearch hidden';
 
     const directionsBtnContainer = document.createElement('div');
-    directionsBtnContainer.className = 'container__searchControls --getDirections hidden';
+    directionsBtnContainer.className = 'container container__searchControls container__searchControls--getDirections hidden';
 
     //input field for finding the user's end destination
     this.destinationInput = document.createElement('input');
@@ -185,8 +184,10 @@ window.onload = function getMap() {
     this.getDirectionsBtn.className = 'tripstr__btn --blue --directionsBtn';
     this.getDirectionsBtn.onclick = function () {
       directionsBtnContainer.classList.add('slideOutDown');
+     
+      this.getDirectionsContainer.classList.add('slideInUp');
       getDirections(locationQuery);
-    };
+    }.bind(this);
 
     // create a button that maps out your current location
     this.locateMeBtn = document.createElement('button');
@@ -209,6 +210,7 @@ window.onload = function getMap() {
       searchContainer.classList.toggle('hidden');
       directionsBtnContainer.classList.toggle('hidden');
       
+      this.getDirectionsContainer.classList.toggle('hidden');
       this.resetBtn.classList.toggle('hidden'); 
       this.resetBtn.setAttribute('disabled', '');
      
@@ -234,6 +236,7 @@ window.onload = function getMap() {
       searchContainer.classList.toggle('hidden');
       directionsBtnContainer.classList.toggle('hidden');
       
+      this.getDirectionsContainer.classList.toggle('hidden');
       this.resetBtn.classList.toggle('hidden');
       this.resetBtn.setAttribute('disabled', '');
 
@@ -251,12 +254,13 @@ window.onload = function getMap() {
     this.resetBtn.id = 'closeDirections';
     this.resetBtn.className = 'mapControls__btn --resetBtn fa fa-times hidden';
     this.resetBtn.onclick = function () {
-      destinationContainer.classList.remove("slideOutLeft");
-      searchContainer.classList.remove("slideOutLeft");
+      destinationContainer.classList.remove('slideOutLeft');
+      searchContainer.classList.remove('slideOutLeft');
       directionsBtnContainer.classList.remove('slideInLeft');
-      directionsBtnContainer.classList.remove("slideOutDown")
-
+      directionsBtnContainer.classList.remove('slideOutDown');
+      
       // return the reset button to its original state. 
+      this.getDirectionsContainer.classList.remove('slideInUp');
       this.resetBtn.setAttribute('disabled', '');
       this.resetBtn.classList.remove('activateResetBtn');
       this.resetBtn.classList.add('deactivateResetBtn');
@@ -299,7 +303,7 @@ window.onload = function getMap() {
 
     directionsBtnContainer.appendChild(this.getDirectionsBtn);
 
-    // container.appendChild(this.getDirectionsContainer);
+    container.appendChild(this.getDirectionsContainer);
 
 
     // style a container for the directionsItinerary

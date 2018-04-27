@@ -1,17 +1,41 @@
 @import '_variables';
 
-.container__searchControls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+.container {
   width: 100%;
   height: 100px;
   position: absolute;
-  bottom: 53px;
-  background-color: $off-white;
-  border-top: 3px solid $violet;
-  transition: .2s ease-in-out
+
+  &__searchControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;  
+    bottom: 53px;
+    background-color: $off-white;
+    border-top: 3px solid $violet;
+    transition: .2s ease-in-out;
+    transition-delay: 150ms;
+    
+    &--destinationSearch {
+      left: 0;
+    }
+    
+    &--placesSearch{
+      left: 100%;
+    }
+    
+    &--getDirections {
+      left: 100%;
+      padding: 0;
+    }
+
+    &--directionsItinerary {
+      bottom: -160px;
+      overflow-y: scroll;
+      align-items: baseline;
+      height: 160px;
+    }
+  }
 }
 
 .container__mapControls {
@@ -31,14 +55,6 @@
   }
 }
 
-.--destinationSearch {
-  left: 0;
-}
-
-.--placesSearch, .--getDirections {
-  left: 100%;
-}
-
-.--getDirections {
-  padding: 0;
+.directionsPanel {
+  width: 100% !important;
 }
