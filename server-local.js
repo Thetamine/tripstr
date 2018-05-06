@@ -3,6 +3,7 @@ const requestPromise = require('request-promise-native');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const app = express();
+const path = require('path');
 
 let code, token, sess; 
 
@@ -30,6 +31,8 @@ app.use(session({secret: 'timetoputsomerandomstring', cookie: {maxAge: 1000 * 60
 // This route checks to see if the user is logged in, if so, it delivers them to the home
 // of the app, if they're not, it redirects them to foursqaure to log in and gain permission
 
+
+//if the user is not authenticated, redirect to foursquare authentication
 function requireLogin(req, res, next) {
   sess = req.session;
       // if the user is logged into foursquare, present some information to the logged in user
@@ -221,5 +224,6 @@ function formatDate(date) {
 }
 
 app.use(express.static(__dirname + '/public/dist'));
+app.use('/js', express.static(path.join(__dirname, '/assets/js')));
 
 app.listen(PORT);

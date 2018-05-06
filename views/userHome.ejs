@@ -1,20 +1,55 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title></title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./styles.css">
-    <!-- Reference to the Bing Maps SDK -->
-    <script type='text/javascript'
-            src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap'
-            async defer></script>
+  <title></title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./styles.css">
+  <!-- Reference to the Bing Maps SDK -->
+  <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
 </head>
+
 <body>
-  <div id="mapContainer">
-    <div id="myMap"></div>
+  <div class="container">
+    <div class="container container__routeTypeContainer" id="routeTypeContainer">
+      <div class="vacationModal">
+        <p>Heading on Vacation?</p>
+        <input type="button" value="Vacation" class="tripstr__btn tripstr__btn--modal --green" id="vacationBtn">
+      </div>
+      <div class="roadTripModal">
+        <p>Heading on a roadTrip?</p>
+        <input type="button" value="Road Trip" class="tripstr__btn tripstr__btn--modal --green" id="roadTripBtn">
+      </div>
+    </div>
+    <div class="mapControlsContainer hidden" id="mapControlsContainer">
+      <button class="mapControls__btn --resetBtn fa fa-times" id="resetBtn"></button>
+      <button class="mapControls__btn --locateMeBtn fa fa-crosshairs" id="locateMe"></button>
+    </div>
+    <div class="container container__searchControls container__searchControls--destinationSearch hidden" id="destinationContainer">
+      <input type="text" class="destinationInput" id="destinationInput" placeholder="Enter Travel Destination">
+      <button class="inputGroup__btn" id="destinationBtn">
+        <i class="far fa-arrow-alt-circle-right"></i>
+      </button>
+    </div>
+    <div class="container container__searchControls container__searchControls--placesSearch hidden" id="searchContainer">
+      <input type="text" class="searchPlacesInput" id="searchPlacesInput" placeholder="Enter Search Terms">
+      <button class="inputGroup__btn" id="searchBtn">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+    <div class="container container__searchControls container__searchControls--getDirections hidden" id="directionsBtnContainer">
+      <input type="button" class="tripstr__btn --blue --directionsBtn" id="getDirectionsBtn" value="Get Directions!">
+    </div>
+    <div class="container container__searchControls container__searchControls--directionsItinerary hidden" id="directionsItinerary">
+
+    </div>
+    <div id="mapContainer">
+      <div id="myMap"></div>
+    </div>
   </div>
   <script src="./jquery-3.2.1.js"></script>
-  <script src="./bundle.js"></script>  
+  <script src="./bundle.js"></script>
 </body>
+
 </html>

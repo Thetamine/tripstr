@@ -11,6 +11,9 @@
     top: 3px;
     transition: 300ms;
   }
+  &--modal {
+    width: 200px;
+  }
 }
 .--green {
   @include buttonColor($off-white, $tripstr-green);

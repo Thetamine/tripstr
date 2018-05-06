@@ -15,6 +15,8 @@ body {
   .tripstr__btn:active {
     top: 3px;
     transition: 300ms; }
+  .tripstr__btn--modal {
+    width: 200px; }
 
 .\--green {
   color: #EEEEEE;
@@ -159,28 +161,6 @@ body {
 .slideInUp {
   bottom: 53px !important; }
 
-.routeTypeContainer {
-  position: absolute;
-  background-color: rgba(32, 22, 17, 0.4);
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; }
-  .routeTypeContainer .roadTripModal, .routeTypeContainer .vacationModal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    text-align: center;
-    height: 35%;
-    width: 90%;
-    margin: 20px;
-    border-radius: 10px;
-    background-color: #EEEEEE; }
-
 .destinationInput, .searchPlacesInput {
   background-color: #EEEEEE;
   color: #1F1611;
@@ -253,13 +233,15 @@ body {
 
 .container {
   width: 100%;
-  height: 100px;
-  position: absolute; }
+  height: 100%;
+  position: absolute;
+  z-index: 1; }
   .container__searchControls {
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    height: 100px;
     bottom: 53px;
     background-color: #EEEEEE;
     border-top: 3px solid #AB3FB1;
@@ -277,8 +259,30 @@ body {
       overflow-y: scroll;
       align-items: baseline;
       height: 160px; }
+  .container__routeTypeContainer {
+    z-index: 1;
+    position: absolute;
+    background-color: rgba(32, 22, 17, 0.4);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .container__routeTypeContainer .roadTripModal, .container__routeTypeContainer .vacationModal {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      text-align: center;
+      height: 35%;
+      width: 90%;
+      margin: 20px;
+      border-radius: 10px;
+      background-color: #EEEEEE; }
 
-.container__mapControls {
+.mapControlsContainer {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -287,8 +291,9 @@ body {
   background-color: #EEEEEE;
   border-radius: 3px;
   color: #1F1611;
-  box-shadow: 2px 3px 6px 0px rgba(32, 22, 17, 0.2); }
-  .container__mapControls button {
+  box-shadow: 2px 3px 6px 0px rgba(32, 22, 17, 0.2);
+  z-index: 1; }
+  .mapControlsContainer button {
     margin: 0 5px;
     padding: 5px 0; }
 

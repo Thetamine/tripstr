@@ -2,32 +2,7 @@
 @import '_mixins';
 @import '_variables';
 
-.routeTypeContainer {
-  position: absolute;
-  background-color: rgba(32, 22, 17, 0.4);
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 
-  .roadTripModal, .vacationModal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    text-align: center;
-    height: 35%;
-    width: 90%;
-    margin: 20px;
-    border-radius: 10px;
-    background-color: $off-white;
-
-  }
-  
-}
 
 .destinationInput, .searchPlacesInput {
   background-color: $off-white;
