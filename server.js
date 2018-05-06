@@ -1,6 +1,7 @@
 const express = require('express');
 const requestPromise = require('request-promise-native');
 const session = require('express-session');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const app = express();
 
@@ -221,5 +222,6 @@ function formatDate(date) {
 }
 
 app.use(express.static(__dirname + '/public/dist'));
+app.use('/js', express.static(path.join(__dirname, '/assets/js')));
 
 app.listen(PORT);
