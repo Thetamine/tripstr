@@ -1,0 +1,14 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+    p {
+        text-align: left;
+        &:last-of-type {
+            text-align: right;
+        }
+        i {
+            color: red;
+        }
+    }
+}

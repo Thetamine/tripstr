@@ -1,15 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./public/dist/style.css">
+  <link rel="stylesheet" href="./styles.css">
   <title>Document</title>
 </head>
+
 <body>
-  <h1>Welcome to Project Tripstr!</h1>
-  <a href="./login">Click here to login!</a>
-  <script src="./../app.js"></script>
+  <header>
+    <div>
+      <h1>tripster.</h1>
+      <a class="home__login" href="./login">
+        <i class="far fa-user-circle"></i>Login</a>
+    </div>
+    <video class="hero-video" src="./tripster-hero-video.mp4" autoplay loop></video>
+  </header>
+  <main>
+    <article class="checklist">
+      <h3>Plan your next adventure</h3>
+      <p class="home__desc">
+        Tripster is an app about getting outside and doing stuff. Want to explore new places? Heading out on that road trip you've
+        been planning on? Maybe you're just going on vacation; whatever the reason, let Tripster help you discover new destinations,
+        and help you get to your old favorites. Planning a trip with tripster Is as easy as 1-2-3:
+      </p>
+      <ul>
+        <li class="home__li">
+          <div class="icon-bg">
+            <i class="fa fa-road"></i>
+          </div>
+          <h4>Where are you heading?</h4>
+          <p>Enter your destination first!</p>
+        </li>
+        <li class="home__li">
+          <div class="icon-bg">
+            <i class="fa fa-search"></i>
+          </div>
+          <h4>Search</h4>
+          <p>Enter what you're looking to do today. (E.G. 'food', or 'shopping')</p>
+        </li>
+        <li class="home__li">
+          <div class="icon-bg">
+            <i class="far fa-map"></i>
+          </div>
+          <h4>Plan your trip</h4>
+          <p>
+            Pick places. Plan your Route. Travel made easy.
+          </p>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h3 class="home__phoneTitle">Redefine the way you Search.</h3>
+      <div class="img-div">
+        <img src="tripster-google-pixel.png" alt="tripster(google pixel)">
+      </div>
+      <a href="./login" class="tripstr__btn--home">Try App</a>
+    </article>
+
+    <footer>
+      <p>&copy; 2018 <a class="home__link" href="https://github.com/thetamine">Shelby Russ</a></p>
+      <p>Built with
+        <i class="far fa-heart"></i> & Javascript.
+      </p>
+    </footer>
+  </main>
+  <script src="./bundle.js"></script>
 </body>
+
 </html>

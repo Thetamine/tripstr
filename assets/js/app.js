@@ -16,7 +16,7 @@
 // THIS IS OLD AND DEPRECIATED AND NOT IMMEDIATELY REQUIRED -- 4/15/2018
 
 window.onload = function getMap() {
-  let obj, catName, directionsManager, searchManager, awesomepleteInput, placesInput = '';
+  let obj, catName, searchManager, awesomepleteInput, placesInput = '';
 
   // create an object for creating a box search for places in foursquare
 
@@ -31,19 +31,18 @@ window.onload = function getMap() {
   // register and load custom modules for use in the app. 
   // it's necessary to import modules this way instead of import / export 
   // because we need to load them inside the getMap() function.
-  Microsoft.Maps.registerModule('userLocation', './js/userLocation.js');
-  Microsoft.Maps.registerModule('getDirections', './js/getDirections.js');
-  Microsoft.Maps.registerModule('determinePinColor', './js/determinePinColor.js');
-  Microsoft.Maps.registerModule('getData', './js/getData.js');
-  Microsoft.Maps.registerModule('destinationSearch', './js/destinationSearch.js');
+  function loadMapModule(moduleName, modulePath) {
+    Microsoft.Maps.registerModule(moduleName, modulePath);
+    Microsoft.Maps.loadModule(moduleName);
+  }
 
-  Microsoft.Maps.loadModule('userLocation');
+  loadMapModule('userLocation', './js/userLocation.js');
   Microsoft.Maps.loadModule('Microsoft.Maps.Directions');
-  Microsoft.Maps.loadModule('getDirections');
-  Microsoft.Maps.loadModule('determinePinColor');
-  Microsoft.Maps.loadModule('getData');
-  Microsoft.Maps.loadModule('destinationSearch');
-
+  loadMapModule('getDirections', './js/getDirections.js');
+  loadMapModule('determinePinColor', './js/determinePinColor.js');
+  loadMapModule('getData', './js/getData.js');
+  loadMapModule('destinationSearch', './js/destinationSearch.js');
+  
   // Load the autosuggest module for assisting in finding the user's
   // end destination.
   Microsoft.Maps.loadModule('Microsoft.Maps.AutoSuggest', function () {
@@ -67,7 +66,7 @@ window.onload = function getMap() {
     userMap.entities.push(userPin);
 
     //Watch the users location.
-    watchId = navigator.geolocation.watchPosition(UsersLocationUpdated);
+    let watchId = navigator.geolocation.watchPosition(UsersLocationUpdated);
   }
 
   function UsersLocationUpdated(position) {
@@ -178,7 +177,7 @@ window.onload = function getMap() {
     locateMeBtnClick: () => {
       locateMe(map, locationQuery.userLocation);
     },
-    resetBtnClick: (userMap) => {
+    resetBtnClick: () => {
 
       elements.destinationContainer.classList.remove('slideOutLeft');
       elements.searchContainer.classList.remove('slideOutLeft');
@@ -194,8 +193,8 @@ window.onload = function getMap() {
       // clear all inputs and map data. 
       elements.destinationInput.value = '';
       elements.searchPlacesInput.value = '';
-      userMap.entities.clear();
-      directionsManager.clearAll();
+      map.entities.clear();
+      window.directionsManager.clearAll();
     }
   }
 

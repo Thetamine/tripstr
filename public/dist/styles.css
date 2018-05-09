@@ -1,22 +1,32 @@
-body {
+@import url(https://fonts.googleapis.com/css?family=Bitter|Comfortaa|Pacifico);body {
   margin: 0; }
 
-.tripstr__btn {
+[class^="tripstr__btn"] {
   padding: 10px 60px;
+  text-decoration: none;
   color: #1F1611;
   background-color: #EEEEEE;
   border: 2px solid #EEEEEE;
   border-bottom: 2px solid #e9e9e9;
   border-radius: 3px; }
-  .tripstr__btn:hover {
+  [class^="tripstr__btn"]:hover {
     background-color: #e1e1e1; }
-  .tripstr__btn:hover {
+  [class^="tripstr__btn"]:hover {
     transition: 300ms; }
-  .tripstr__btn:active {
+  [class^="tripstr__btn"]:active {
     top: 3px;
     transition: 300ms; }
-  .tripstr__btn--modal {
+  [class^="tripstr__btn"]\--modal {
     width: 200px; }
+  [class^="tripstr__btn"][class*="--home"] {
+    font-size: 24px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-family: 'comfortaa', cursive;
+    border: none;
+    color: white;
+    background-color: #2d2d2d;
+    box-shadow: 0 5px 20px -3px rgba(0, 0, 0, 0.6); }
 
 .\--green {
   color: #EEEEEE;
@@ -233,8 +243,8 @@ body {
 
 .container {
   width: 100%;
-  height: 100%;
   position: absolute;
+  overflow: hidden;
   z-index: 1; }
   .container__searchControls {
     display: flex;
@@ -299,6 +309,160 @@ body {
 
 .directionsPanel {
   width: 100% !important; }
+
+.hero-video {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1; }
+
+header {
+  position: relative; }
+  header > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to top, black, transparent); }
+    header > div h1, header > div a {
+      font-family: 'comfortaa', serif;
+      color: white;
+      text-decoration: none; }
+    header > div h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      margin-bottom: 5px; }
+    header > div a > i {
+      padding-right: 5px; }
+
+* {
+  box-sizing: border-box; }
+
+.home__desc {
+  font-size: 18px;
+  padding-top: 40px;
+  margin-top: 30px;
+  border-top: 3px solid #3046C7;
+  letter-spacing: 1;
+  color: #EEEEEE;
+  line-height: 30px; }
+
+.home__login {
+  margin-top: 15px;
+  background-color: #3046C7;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #121b4c;
+  letter-spacing: 2.5px; }
+  .home__login > i {
+    font-size: 25px;
+    margin-bottom: 3px;
+    margin-right: 5px; }
+
+.home__li {
+  width: 100%;
+  background-image: linear-gradient(to bottom, #1f2e8b, #121b4c);
+  padding: 15px 10px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border-bottom: 4px solid #111; }
+  .home__li h4 {
+    margin: 20px auto 0 auto;
+    padding: 5px 20px;
+    font-size: 20px;
+    background-color: black;
+    box-shadow: 0 3px 10px -1px rgba(0, 0, 0, 0.8); }
+  .home__li p {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); }
+
+.home__phoneTitle {
+  padding: 0;
+  margin-bottom: 30px;
+  line-height: 30px; }
+
+.home__link {
+  color: white;
+  text-decoration: underline;
+  transition: .2s ease-in-out; }
+  .home__link:hover {
+    font-size: 14px; }
+
+main {
+  background-color: #000;
+  color: #EEEEEE;
+  text-align: center;
+  padding: 30px 15px;
+  background-image: linear-gradient(to bottom, black, black, #3046C7); }
+  main h3 {
+    font-size: 30px;
+    text-transform: uppercase;
+    line-height: 40px;
+    padding: 0;
+    margin: 0; }
+  main h1, main h2, main h3, main h4, main h5, main h6, main p {
+    padding-left: 5px;
+    font-family: 'comfortaa', sans-serif; }
+  main p {
+    font-family: 'comfortaa', serif;
+    font-size: 1.1em;
+    line-height: 1.4em;
+    text-align: justify; }
+  main article {
+    padding: 15px 10px 15px 10px; }
+    main article .img-div {
+      max-width: 350px;
+      padding-left: 55px;
+      margin: 0 auto; }
+      main article .img-div img {
+        width: 100%; }
+  main ul {
+    list-style: none;
+    margin: 0;
+    padding: 15px 0; }
+    main ul li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; }
+      main ul li h4 {
+        padding: 0;
+        margin: 0; }
+      main ul li p {
+        text-align: center; }
+      main ul li .icon-bg {
+        background-color: #3046C7;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        display: flex;
+        margin-bottom: 5px;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 3px 10px -1px rgba(0, 0, 0, 0.8); }
+        main ul li .icon-bg i {
+          font-size: 40px;
+          color: white;
+          text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2); }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px; }
+  footer p {
+    text-align: left; }
+    footer p:last-of-type {
+      text-align: right; }
+    footer p i {
+      color: red; }
 
 /*!
  * Font Awesome Free 5.0.10 by @fontawesome - https://fontawesome.com
